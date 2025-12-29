@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 모드 // Wedding.exe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0D1117;
+            --bg-card: #161B22;
+            --bg-input: #21262D;
+            --border: #30363D;
+            --text: #C9D1D9;
+            --text-dim: #8B949E;
+            --green: #3FB950;
+            --green-dim: #238636;
+            --blue: #58A6FF;
+            --purple: #A371F7;
+            --pink: #FF7B72;
+            --yellow: #E3B341;
+            --cyan: #79C0FF;
+            --orange: #FFA657;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            background: var(--bg-dark);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .admin-container {
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .admin-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, var(--pink) 0%, var(--purple) 100%);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .admin-header h1 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .admin-header .subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .admin-body {
+            padding: 30px 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            font-size: 13px;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--green);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--green-dim);
+            color: var(--green);
+            border: 1px solid var(--green);
+            border-radius: 6px;
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: var(--green);
+            color: var(--bg-dark);
+        }
+
+        .status-message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            text-align: center;
+            display: none;
+        }
+
+        .status-message.success {
+            background: rgba(63, 185, 80, 0.2);
+            color: var(--green);
+            border: 1px solid var(--green);
+            display: block;
+        }
+
+        .status-message.error {
+            background: rgba(255, 123, 114, 0.2);
+            color: var(--pink);
+            border: 1px solid var(--pink);
+            display: block;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: var(--cyan);
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.3s;
+        }
+
+        .back-link a:hover {
+            color: var(--blue);
+        }
+
+        .info-box {
+            background: var(--bg-input);
+            border: 1px dashed var(--border);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 11px;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .info-box strong {
+            color: var(--text);
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-card">
+            <div class="admin-header">
+                <h1>🔐 Admin Mode</h1>
+                <div class="subtitle">// 관리자 모드 전환</div>
+            </div>
+            <div class="admin-body">
+                <div class="info-box">
+                    <strong>비밀번호:</strong><br>
+                    • <strong>0000</strong> 입력 시 관리자 모드 활성화<br>
+                    • <strong>1234</strong> 입력 시 관리자 모드 비활성화
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="admin-password" class="form-input" placeholder="비밀번호를 입력하세요" autocomplete="off">
+                </div>
+
+                <button id="submit-admin" class="submit-btn">
+                    <span>인증하기</span>
+                </button>
+
+                <div id="status-message" class="status-message"></div>
+
+                <div class="back-link">
+                    <a href="index.html">← 메인 페이지로 돌아가기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 관리자 모드 상태 확인
+        function isAdminMode() {
+            return localStorage.getItem('admin-mode') === 'true';
+        }
+
+        // 관리자 모드 활성화
+        function enableAdminMode() {
+            localStorage.setItem('admin-mode', 'true');
+        }
+
+        // 관리자 모드 비활성화
+        function disableAdminMode() {
+            localStorage.setItem('admin-mode', 'false');
+        }
+
+        // 이벤트 리스너
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('admin-password');
+            const submitBtn = document.getElementById('submit-admin');
+            const statusMessage = document.getElementById('status-message');
+
+            // 현재 상태 표시
+            if (isAdminMode()) {
+                statusMessage.textContent = '현재 관리자 모드가 활성화되어 있습니다.';
+                statusMessage.className = 'status-message success';
+            }
+
+            // 제출 버튼
+            submitBtn.addEventListener('click', function() {
+                const password = passwordInput.value.trim();
+
+                if (password === '0000') {
+                    enableAdminMode();
+                    statusMessage.textContent = '관리자 모드가 활성화되었습니다!';
+                    statusMessage.className = 'status-message success';
+                    passwordInput.value = '';
+                    
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else if (password === '1234') {
+                    disableAdminMode();
+                    statusMessage.textContent = '관리자 모드가 비활성화되었습니다.';
+                    statusMessage.className = 'status-message success';
+                    passwordInput.value = '';
+                } else {
+                    statusMessage.textContent = '잘못된 비밀번호입니다.';
+                    statusMessage.className = 'status-message error';
+                    passwordInput.value = '';
+                }
+            });
+
+            // Enter 키로 제출
+            passwordInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    submitBtn.click();
+                }
+            });
+
+            // 포커스
+            passwordInput.focus();
+        });
+    </script>
+</body>
+</html>
+

@@ -265,7 +265,7 @@
 
         .info-label {
             font-size: 10px;
-            color: var(--text-dim);
+            color: var(--text);
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 4px;
@@ -278,6 +278,132 @@
 
         .info-value .highlight {
             color: var(--yellow);
+        }
+
+        /* Account Section */
+        .account-section {
+            margin-top: 25px;
+        }
+
+        .account-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .account-item {
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .account-header {
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            color: var(--text);
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            text-align: left;
+            transition: background 0.3s;
+        }
+
+        .account-header:hover {
+            background: var(--bg-dark);
+        }
+
+        .account-icon {
+            font-size: 18px;
+        }
+
+        .account-title {
+            flex: 1;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--cyan);
+        }
+
+        .account-arrow {
+            font-size: 12px;
+            color: var(--text-dim);
+            transition: transform 0.3s;
+        }
+
+        .account-item.active .account-arrow {
+            transform: rotate(180deg);
+        }
+
+        .account-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .account-item.active .account-content {
+            max-height: 500px;
+            transition: max-height 0.3s ease-in;
+        }
+
+        .account-list {
+            padding: 0 15px 15px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .account-entry {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr 2fr;
+            gap: 10px;
+            padding: 12px;
+            background: var(--bg-dark);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            font-size: 12px;
+        }
+
+        .account-bank,
+        .account-number,
+        .account-name,
+        .account-contact {
+            color: var(--text);
+            word-break: break-word;
+        }
+
+        .account-name {
+            color: var(--text-dim);
+            text-align: center;
+            margin-left: -10px;
+        }
+
+        .account-contact {
+            color: var(--text);
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            font-size: 11px;
+        }
+
+        .account-bank {
+            color: var(--cyan);
+            font-weight: 500;
+        }
+
+        .account-number {
+            color: var(--text);
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+        }
+
+        /* Info Grid (독립 섹션으로 변경) */
+        .info-grid {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 0 20px;
         }
 
         /* Update Section - Developer Style */
@@ -624,6 +750,363 @@
             color: var(--pink);
         }
 
+        /* Guestbook Section */
+        .guestbook-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease-out 0.6s both;
+        }
+
+        .guestbook-header {
+            background: var(--bg-input);
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .guestbook-icon {
+            font-size: 16px;
+        }
+
+        .guestbook-title {
+            font-size: 13px;
+            color: var(--cyan);
+            flex: 1;
+        }
+
+        .guestbook-badge {
+            font-size: 10px;
+            padding: 3px 8px;
+            background: rgba(63, 185, 80, 0.2);
+            color: var(--green);
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .download-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 4px 8px;
+            cursor: pointer;
+            color: var(--text);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: var(--bg-input);
+            border-color: var(--green);
+        }
+
+        .download-icon {
+            font-size: 14px;
+        }
+
+        .guestbook-body {
+            padding: 20px;
+        }
+
+        /* Guestbook Form */
+        .guestbook-form {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--bg-input);
+            border-radius: 8px;
+            border: 1px dashed var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            font-size: 13px;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--green);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .char-count {
+            text-align: right;
+            font-size: 10px;
+            color: var(--text-dim);
+            margin-top: 5px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--green-dim);
+            color: var(--green);
+            border: 1px solid var(--green);
+            border-radius: 6px;
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+
+        .submit-btn:hover {
+            background: var(--green);
+            color: var(--bg-dark);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .submit-icon {
+            font-size: 16px;
+        }
+
+        /* Guestbook Entries */
+        .guestbook-entries {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .guestbook-entry {
+            padding: 15px;
+            background: var(--bg-input);
+            border-radius: 8px;
+            border-left: 3px solid var(--purple);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .entry-name {
+            font-size: 14px;
+            color: var(--cyan);
+            font-weight: 500;
+        }
+
+        .entry-date {
+            font-size: 10px;
+            color: var(--text);
+        }
+
+        .entry-message {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .entry-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-dim);
+            font-size: 12px;
+        }
+
+        .entry-empty-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        /* Admin Mode Styles */
+        .admin-controls {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .admin-btn {
+            flex: 1;
+            padding: 6px 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: var(--bg-dark);
+            color: var(--text);
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .admin-btn.edit {
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        .admin-btn.edit:hover {
+            background: var(--blue);
+            color: var(--bg-dark);
+        }
+
+        .admin-btn.delete {
+            border-color: var(--pink);
+            color: var(--pink);
+        }
+
+        .admin-btn.delete:hover {
+            background: var(--pink);
+            color: var(--bg-dark);
+        }
+
+        .admin-btn.save {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .admin-btn.save:hover {
+            background: var(--green);
+            color: var(--bg-dark);
+        }
+
+        .admin-btn.cancel {
+            border-color: var(--text-dim);
+            color: var(--text-dim);
+        }
+
+        .admin-btn.cancel:hover {
+            background: var(--text-dim);
+            color: var(--bg-dark);
+        }
+
+        .entry-editing .entry-message {
+            display: none;
+        }
+
+        .entry-edit-form {
+            display: none;
+        }
+
+        .entry-editing .entry-edit-form {
+            display: block;
+        }
+
+        .entry-edit-input,
+        .entry-edit-textarea {
+            width: 100%;
+            padding: 8px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text);
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .entry-edit-textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .admin-panel {
+            background: var(--bg-input);
+            border: 1px solid var(--pink);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .admin-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .admin-panel-title {
+            font-size: 12px;
+            color: var(--pink);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .admin-panel-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .admin-panel-btn {
+            padding: 8px 12px;
+            border: 1px solid var(--pink);
+            border-radius: 4px;
+            background: transparent;
+            color: var(--pink);
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .admin-panel-btn:hover {
+            background: var(--pink);
+            color: var(--bg-dark);
+        }
+
+        .admin-panel-btn .download-icon {
+            font-size: 12px;
+        }
+
+        .admin-panel-btn.danger {
+            border-color: var(--pink);
+            color: var(--pink);
+        }
+
+        .admin-panel-btn.danger:hover {
+            background: var(--pink);
+            color: var(--bg-dark);
+        }
+
         /* Matrix Rain Effect */
         .matrix-bg {
             position: fixed;
@@ -727,6 +1210,24 @@
             .info-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
+                padding: 0 30px;
+            }
+
+            .account-section {
+                margin-top: 30px;
+            }
+
+            .account-header {
+                padding: 18px 20px;
+            }
+
+            .account-title {
+                font-size: 14px;
+            }
+
+            .account-entry {
+                font-size: 13px;
+                padding: 15px;
             }
 
             .info-item {
@@ -1171,33 +1672,97 @@
                     </div>
                 </div>
 
-                <!-- Info Grid -->
-                <div class="info-grid">
-                    <div class="info-item">
-                        <div class="info-icon">📅</div>
-                        <div class="info-content">
-                            <div class="info-label">Date.parse()</div>
-                            <div class="info-value">
-                                <span class="highlight">2026</span>.04.04 (토요일)
+                <!-- Account Section -->
+                <div class="account-section">
+                    <div class="account-accordion">
+                        <div class="account-item">
+                            <button class="account-header" onclick="toggleAccount('groom')">
+                                <span class="account-icon">💳</span>
+                                <span class="account-title">GROOM 연락처 & 계좌번호</span>
+                                <span class="account-arrow" id="groom-arrow">▼</span>
+                            </button>
+                            <div class="account-content" id="groom-content">
+                                <div class="account-list">
+                                    <div class="account-entry">
+                                        <div class="account-name">류병화</div>
+                                        <div class="account-contact">연락처</div>
+                                        <div class="account-bank">은행명</div>
+                                        <div class="account-number">계좌번호</div>
+                                    </div>
+                                    <div class="account-entry">
+                                        <div class="account-name">박  정</div>
+                                        <div class="account-contact">연락처</div>
+                                        <div class="account-bank">은행명</div>
+                                        <div class="account-number">계좌번호</div>
+                                    </div>
+                                    <div class="account-entry">
+                                        <div class="account-name">류민규</div>
+                                        <div class="account-contact">연락처</div>
+                                        <div class="account-bank">은행명</div>
+                                        <div class="account-number">계좌번호</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-item">
+                            <button class="account-header" onclick="toggleAccount('bride')">
+                                <span class="account-icon">💳</span>
+                                <span class="account-title">BRIDE 연락처 & 계좌번호</span>
+                                <span class="account-arrow" id="bride-arrow">▼</span>
+                            </button>
+                            <div class="account-content" id="bride-content">
+                                <div class="account-list">
+                                    <div class="account-entry">
+                                        <div class="account-name">권기민</div>
+                                        <div class="account-contact">연락처</div>
+                                        <div class="account-bank">은행명</div>
+                                        <div class="account-number">계좌번호</div>
+                                    </div>
+                                    <div class="account-entry">
+                                        <div class="account-name">조숙희</div>
+                                        <div class="account-contact">연락처</div>
+                                        <div class="account-bank">은행명</div>
+                                        <div class="account-number">계좌번호</div>
+                                    </div>
+                                    <div class="account-entry">
+                                        <div class="account-name">권희선</div>
+                                        <div class="account-contact">연락처</div>
+                                        <div class="account-bank">은행명</div>
+                                        <div class="account-number">계좌번호</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">⏰</div>
-                        <div class="info-content">
-                            <div class="info-label">Time.set()</div>
-                            <div class="info-value">
-                                PM <span class="highlight">16:00</span>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Grid (Life.merge() 박스 아래로 이동) -->
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-icon">📅</div>
+                <div class="info-content">
+                    <div class="info-label">Date.parse()</div>
+                    <div class="info-value">
+                        2026.04.04 (토요일)
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">📍</div>
-                        <div class="info-content">
-                            <div class="info-label">Location.find()</div>
-                            <div class="info-value">국방컨벤션</div>
-                        </div>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">⏰</div>
+                <div class="info-content">
+                    <div class="info-label">Time.set()</div>
+                    <div class="info-value">
+                        PM 16:00
                     </div>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div class="info-content">
+                    <div class="info-label">Location.find()</div>
+                    <div class="info-value">국방컨벤션</div>
                 </div>
             </div>
         </div>
@@ -1231,6 +1796,18 @@
                         <span class="commit-hash">a1b2c3d</span>
                         <span class="commit-date">2025.06.21</span>
                         <span class="commit-msg">init: 프로젝트 시작 🎉</span>
+                        <span class="commit-tag">released</span>
+                    </div>
+                    <div class="git-commit completed">
+                        <span class="commit-hash">c3d4e5f</span>
+                        <span class="commit-date">2025.09.04</span>
+                        <span class="commit-msg">feat: 웨딩홀 계약 완료 💒</span>
+                        <span class="commit-tag">released</span>
+                    </div>
+                    <div class="git-commit completed">
+                        <span class="commit-hash">b2c3d4e</span>
+                        <span class="commit-date">2025.10.25</span>
+                        <span class="commit-msg">feat: 상견례 👨‍👩‍👧‍👦</span>
                         <span class="commit-tag">released</span>
                     </div>
                     <div class="git-commit completed">
@@ -1296,14 +1873,54 @@
                         <span class="file-name">location_map.png</span>
                         <span class="file-status">rendering...</span>
                     </div>
-                    <div class="file-item loading">
-                        <span class="file-icon">💌</span>
-                        <span class="file-name">guestbook.db</span>
-                        <span class="file-status">initializing...</span>
-                    </div>
                 </div>
                 <div class="coming-soon-message">
                     <span class="blink-text">_</span> 콘텐츠를 열심히 준비 중입니다...
+                </div>
+            </div>
+        </div>
+
+        <!-- Guestbook Section -->
+        <div class="guestbook-section">
+            <div class="guestbook-header">
+                <span class="guestbook-icon">💌</span>
+                <span class="guestbook-title">guestbook.db</span>
+                <span class="guestbook-badge">active</span>
+            </div>
+            <div class="guestbook-body">
+                <!-- Guestbook Form -->
+                <div class="guestbook-form">
+                    <div class="form-group">
+                        <label class="form-label">이름</label>
+                        <input type="text" id="guest-name" class="form-input" placeholder="이름을 입력하세요" maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">메시지</label>
+                        <textarea id="guest-message" class="form-textarea" placeholder="축하 메시지를 남겨주세요" maxlength="200"></textarea>
+                        <div class="char-count"><span id="char-count">0</span>/200</div>
+                    </div>
+                    <button id="submit-guestbook" class="submit-btn">
+                        <span class="submit-icon">💾</span>
+                        <span>저장하기</span>
+                    </button>
+                </div>
+
+                <!-- Admin Panel (관리자 모드일 때만 표시) -->
+                <div id="admin-panel" class="admin-panel" style="display: none;">
+                    <div class="admin-panel-header">
+                        <div class="admin-panel-title">🔐 관리자 모드</div>
+                        <div class="admin-panel-actions">
+                            <button id="download-guestbook" class="admin-panel-btn" title="방명록 JSON 다운로드">
+                                <span class="download-icon">⬇️</span> 다운로드
+                            </button>
+                            <button id="delete-all-btn" class="admin-panel-btn danger">전체 삭제</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guestbook Entries -->
+                <div class="guestbook-entries" id="guestbook-entries">
+                    <!-- Entries will be loaded here -->
                 </div>
             </div>
         </div>
@@ -1339,9 +1956,11 @@
             // 마일스톤 상태 업데이트
             const milestones = [
                 { date: new Date(2025, 5, 21), element: 0 },
-                { date: new Date(2025, 11, 27), element: 1 },
-                { date: new Date(2026, 0, 15), element: 2 },
-                { date: new Date(2026, 3, 4), element: 3 }
+                { date: new Date(2025, 8, 4), element: 1 },
+                { date: new Date(2025, 9, 25), element: 2 },
+                { date: new Date(2025, 11, 27), element: 3 },
+                { date: new Date(2026, 0, 15), element: 4 },
+                { date: new Date(2026, 3, 4), element: 5 }
             ];
 
             const commits = document.querySelectorAll('.git-commit');
@@ -1369,6 +1988,521 @@
 
         // 페이지 로드 시 실행
         calculateProgress();
+
+        // ==================== 계좌번호 아코디언 기능 ====================
+        
+        function toggleAccount(type) {
+            const arrow = document.getElementById(`${type}-arrow`);
+            const content = document.getElementById(`${type}-content`);
+            const accountItem = arrow.closest('.account-item');
+            
+            if (accountItem.classList.contains('active')) {
+                accountItem.classList.remove('active');
+                content.style.maxHeight = '0';
+            } else {
+                // 다른 아코디언 닫기
+                document.querySelectorAll('.account-item').forEach(item => {
+                    item.classList.remove('active');
+                    const itemContent = item.querySelector('.account-content');
+                    if (itemContent) {
+                        itemContent.style.maxHeight = '0';
+                    }
+                });
+                
+                // 현재 아코디언 열기
+                accountItem.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }
+
+        // ==================== 방명록 기능 ====================
+        
+        const API_BASE_URL = window.location.origin;
+        const API_ENABLED = true; // 서버가 있으면 true, 없으면 false
+
+        // 서버에서 방명록 데이터 로드
+        async function loadGuestbookFromServer() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/guestbook`);
+                const data = await response.json();
+                if (data.success) {
+                    return data.entries;
+                }
+            } catch (error) {
+                console.log('서버에서 로드 실패, localStorage 사용:', error);
+            }
+            return null;
+        }
+
+        // localStorage에서 방명록 데이터 로드 (폴백)
+        function loadGuestbookFromLocal() {
+            const entries = JSON.parse(localStorage.getItem('wedding-guestbook') || '[]');
+            return entries;
+        }
+
+        // 방명록 데이터 로드 (서버 우선, 없으면 localStorage)
+        async function loadGuestbook() {
+            if (API_ENABLED) {
+                const serverEntries = await loadGuestbookFromServer();
+                if (serverEntries !== null) {
+                    // 서버 데이터와 localStorage 동기화
+                    localStorage.setItem('wedding-guestbook', JSON.stringify(serverEntries));
+                    return serverEntries;
+                }
+            }
+            return loadGuestbookFromLocal();
+        }
+
+        // 서버에 방명록 데이터 저장
+        async function saveGuestbookToServer(entry) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/guestbook`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: entry.name,
+                        message: entry.message
+                    })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    // guestbook 폴더에 저장 성공
+                    return true;
+                } else {
+                    throw new Error(data.error || '저장 실패');
+                }
+            } catch (error) {
+                console.log('서버 저장 실패:', error);
+                return false;
+            }
+        }
+
+        // localStorage에 방명록 데이터 저장 (폴백)
+        function saveGuestbookToLocal(entries) {
+            localStorage.setItem('wedding-guestbook', JSON.stringify(entries));
+        }
+
+        // JSON 파일로 다운로드
+        function downloadGuestbookJSON(entries) {
+            const dataStr = JSON.stringify(entries, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `guestbook-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        // 서버에서 방명록 삭제
+        async function deleteEntryFromServer(date) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/guestbook/${encodeURIComponent(date)}`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+                return data.success;
+            } catch (error) {
+                console.log('서버 삭제 실패:', error);
+                return false;
+            }
+        }
+
+        // 서버에서 방명록 수정
+        async function updateEntryOnServer(date, entry) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/guestbook/${encodeURIComponent(date)}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: entry.name,
+                        message: entry.message
+                    })
+                });
+                const data = await response.json();
+                return data.success;
+            } catch (error) {
+                console.log('서버 수정 실패:', error);
+                return false;
+            }
+        }
+
+        // 서버에서 전체 방명록 삭제
+        async function deleteAllFromServer() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/guestbook`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+                return data.success;
+            } catch (error) {
+                console.log('서버 전체 삭제 실패:', error);
+                return false;
+            }
+        }
+
+        // 방명록 엔트리 수정
+        async function editEntry(index) {
+            const entryElement = document.querySelector(`.guestbook-entry[data-index="${index}"]`);
+            if (!entryElement) return;
+
+            const isEditing = entryElement.classList.contains('entry-editing');
+            
+            if (isEditing) {
+                // 저장
+                const nameInput = entryElement.querySelector('.entry-edit-name');
+                const messageInput = entryElement.querySelector('.entry-edit-message');
+                
+                const newName = nameInput.value.trim();
+                const newMessage = messageInput.value.trim();
+
+                if (!newName || !newMessage) {
+                    alert('이름과 메시지를 모두 입력해주세요.');
+                    return;
+                }
+
+                if (newName.length > 20) {
+                    alert('이름은 20자 이하로 입력해주세요.');
+                    return;
+                }
+
+                if (newMessage.length > 200) {
+                    alert('메시지는 200자 이하로 입력해주세요.');
+                    return;
+                }
+
+                const date = entryElement.dataset.date;
+                const entries = await loadGuestbook();
+                const entryIndex = entries.findIndex(e => e.date === date);
+                
+                if (entryIndex === -1) return;
+
+                const updatedEntry = {
+                    ...entries[entryIndex],
+                    name: newName,
+                    message: newMessage
+                };
+
+                // 서버에 수정 시도
+                let updatedOnServer = false;
+                if (API_ENABLED) {
+                    updatedOnServer = await updateEntryOnServer(date, updatedEntry);
+                }
+
+                // 로컬 업데이트
+                entries[entryIndex] = updatedEntry;
+                saveGuestbookToLocal(entries);
+
+                // 화면 새로고침
+                await displayGuestbook();
+                
+                if (updatedOnServer) {
+                    alert('방명록이 수정되었습니다!');
+                } else {
+                    alert('방명록이 수정되었습니다! (로컬 저장)');
+                }
+            } else {
+                // 수정 모드로 전환
+                entryElement.classList.add('entry-editing');
+                const editBtn = entryElement.querySelector('.admin-btn.edit');
+                editBtn.textContent = '저장';
+                editBtn.classList.remove('edit');
+                editBtn.classList.add('save');
+            }
+        }
+
+        // 방명록 엔트리 삭제
+        async function deleteEntry(index) {
+            if (!confirm('정말 이 방명록을 삭제하시겠습니까?')) {
+                return;
+            }
+
+            const entryElement = document.querySelector(`.guestbook-entry[data-index="${index}"]`);
+            if (!entryElement) return;
+
+            const date = entryElement.dataset.date;
+            const entries = await loadGuestbook();
+            const filteredEntries = entries.filter(e => e.date !== date);
+
+            // 서버에 삭제 시도
+            let deletedOnServer = false;
+            if (API_ENABLED) {
+                deletedOnServer = await deleteEntryFromServer(date);
+            }
+
+            // 로컬 삭제
+            saveGuestbookToLocal(filteredEntries);
+
+            // 화면 새로고침
+            await displayGuestbook();
+
+            if (deletedOnServer) {
+                alert('방명록이 삭제되었습니다!');
+            } else {
+                alert('방명록이 삭제되었습니다! (로컬 저장)');
+            }
+        }
+
+        // 전체 방명록 삭제
+        async function deleteAllEntries() {
+            if (!confirm('정말 모든 방명록을 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) {
+                return;
+            }
+
+            // 서버에 전체 삭제 시도
+            let deletedOnServer = false;
+            if (API_ENABLED) {
+                deletedOnServer = await deleteAllFromServer();
+            }
+
+            // 로컬 삭제
+            saveGuestbookToLocal([]);
+
+            // 화면 새로고침
+            await displayGuestbook();
+
+            if (deletedOnServer) {
+                alert('모든 방명록이 삭제되었습니다!');
+            } else {
+                alert('모든 방명록이 삭제되었습니다! (로컬 저장)');
+            }
+        }
+
+        // 관리자 모드 확인
+        function isAdminMode() {
+            return localStorage.getItem('admin-mode') === 'true';
+        }
+
+        // 관리자 패널 표시/숨김
+        function toggleAdminPanel() {
+            const adminPanel = document.getElementById('admin-panel');
+            if (isAdminMode()) {
+                adminPanel.style.display = 'block';
+            } else {
+                adminPanel.style.display = 'none';
+            }
+        }
+
+        // 방명록 엔트리 표시
+        async function displayGuestbook() {
+            const entries = await loadGuestbook();
+            const container = document.getElementById('guestbook-entries');
+            
+            if (entries.length === 0) {
+                container.innerHTML = `
+                    <div class="entry-empty">
+                        <div class="entry-empty-icon">📝</div>
+                        <div>아직 방명록이 비어있습니다.<br>첫 번째 축하 메시지를 남겨주세요!</div>
+                    </div>
+                `;
+                toggleAdminPanel();
+                return;
+            }
+
+            // 최신순으로 정렬
+            const sortedEntries = entries.sort((a, b) => new Date(b.date) - new Date(a.date));
+            const adminMode = isAdminMode();
+            
+            container.innerHTML = sortedEntries.map((entry, index) => `
+                <div class="guestbook-entry" data-index="${index}" data-date="${entry.date}">
+                    <div class="entry-header">
+                        <span class="entry-name">${escapeHtml(entry.name)}</span>
+                        <span class="entry-date">${formatDate(entry.date)}</span>
+                    </div>
+                    <div class="entry-message">${escapeHtml(entry.message)}</div>
+                    ${adminMode ? `
+                    <div class="entry-edit-form">
+                        <input type="text" class="entry-edit-input entry-edit-name" value="${escapeHtml(entry.name)}" maxlength="20" placeholder="이름">
+                        <textarea class="entry-edit-textarea entry-edit-message" maxlength="200" placeholder="메시지">${escapeHtml(entry.message)}</textarea>
+                    </div>
+                    <div class="admin-controls">
+                        <button class="admin-btn edit" onclick="editEntry(${index})">수정</button>
+                        <button class="admin-btn delete" onclick="deleteEntry(${index})">삭제</button>
+                    </div>
+                    ` : ''}
+                </div>
+            `).join('');
+
+            toggleAdminPanel();
+        }
+
+        // HTML 이스케이프 (XSS 방지)
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 날짜 포맷팅
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${year}.${month}.${day} ${hours}:${minutes}`;
+        }
+
+        // 방명록 제출
+        async function submitGuestbook() {
+            const nameInput = document.getElementById('guest-name');
+            const messageInput = document.getElementById('guest-message');
+            const submitBtn = document.getElementById('submit-guestbook');
+            
+            const name = nameInput.value.trim();
+            const message = messageInput.value.trim();
+
+            // 유효성 검사
+            if (!name) {
+                alert('이름을 입력해주세요.');
+                nameInput.focus();
+                return;
+            }
+
+            if (!message) {
+                alert('메시지를 입력해주세요.');
+                messageInput.focus();
+                return;
+            }
+
+            if (name.length > 20) {
+                alert('이름은 20자 이하로 입력해주세요.');
+                nameInput.focus();
+                return;
+            }
+
+            if (message.length > 200) {
+                alert('메시지는 200자 이하로 입력해주세요.');
+                messageInput.focus();
+                return;
+            }
+
+            // 버튼 비활성화
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="submit-icon">⏳</span><span>저장 중...</span>';
+
+            // 새 엔트리 생성
+            const newEntry = {
+                name: name,
+                message: message,
+                date: new Date().toISOString()
+            };
+
+            // 서버에 저장 시도
+            let savedToServer = false;
+            if (API_ENABLED) {
+                savedToServer = await saveGuestbookToServer(newEntry);
+            }
+
+            // 서버 저장 실패 시 localStorage에 저장
+            if (!savedToServer) {
+                const entries = await loadGuestbook();
+                entries.push(newEntry);
+                saveGuestbookToLocal(entries);
+            } else {
+                // 서버 저장 성공 시 localStorage도 업데이트
+                const entries = await loadGuestbook();
+                entries.push(newEntry);
+                saveGuestbookToLocal(entries);
+            }
+
+            // 입력 필드 초기화
+            nameInput.value = '';
+            messageInput.value = '';
+            updateCharCount();
+
+            // 방명록 다시 표시
+            await displayGuestbook();
+
+            // 버튼 복원
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span class="submit-icon">💾</span><span>저장하기</span>';
+            }, 500);
+
+            // 성공 메시지
+            if (savedToServer) {
+                alert('방명록이 guestbook 폴더에 저장되었습니다! 감사합니다 💕');
+            } else {
+                alert('방명록이 저장되었습니다! (로컬 저장) 감사합니다 💕');
+            }
+        }
+
+        // 글자 수 카운터 업데이트
+        function updateCharCount() {
+            const messageInput = document.getElementById('guest-message');
+            const charCount = document.getElementById('char-count');
+            const count = messageInput.value.length;
+            charCount.textContent = count;
+            
+            if (count > 200) {
+                charCount.style.color = '#FF7B72'; // --pink
+            } else if (count > 180) {
+                charCount.style.color = '#E3B341'; // --yellow
+            } else {
+                charCount.style.color = '#8B949E'; // --text-dim
+            }
+        }
+
+        // 이벤트 리스너 등록
+        document.addEventListener('DOMContentLoaded', async function() {
+            // 방명록 표시
+            await displayGuestbook();
+
+            // 제출 버튼
+            const submitBtn = document.getElementById('submit-guestbook');
+            submitBtn.addEventListener('click', submitGuestbook);
+
+            // 관리자 모드 상태 확인 및 패널 표시
+            toggleAdminPanel();
+
+            // 다운로드 버튼 (관리자 모드일 때만 표시)
+            const downloadBtn = document.getElementById('download-guestbook');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', async function() {
+                    const entries = await loadGuestbook();
+                    if (entries.length === 0) {
+                        alert('다운로드할 방명록이 없습니다.');
+                        return;
+                    }
+                    downloadGuestbookJSON(entries);
+                });
+            }
+
+            // 전체 삭제 버튼 (관리자 모드)
+            const deleteAllBtn = document.getElementById('delete-all-btn');
+            if (deleteAllBtn) {
+                deleteAllBtn.addEventListener('click', deleteAllEntries);
+            }
+
+            // 글자 수 카운터
+            const messageInput = document.getElementById('guest-message');
+            messageInput.addEventListener('input', updateCharCount);
+
+            // Enter 키로 제출 (Shift+Enter는 줄바꿈)
+            messageInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    submitGuestbook();
+                }
+            });
+
+            // 이름 입력 필드에서 Enter 키로 메시지로 이동
+            const nameInput = document.getElementById('guest-name');
+            nameInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    messageInput.focus();
+                }
+            });
+        });
     </script>
 </body>
 </html>

@@ -34,12 +34,20 @@ Git log 스타일로 표시되는 마일스톤:
 - 오늘 날짜에 따라 자동으로 퍼센티지 계산
 - 마일스톤 상태 자동 업데이트 (released/in progress/scheduled)
 
+### 💌 방명록 기능
+- 이름과 메시지 입력
+- 글자 수 카운터 (200자 제한)
+- **서버 사이드 저장**: `guestbook/entries.json` 파일에 저장
+- **로컬 저장**: 서버가 없을 경우 localStorage 사용
+- JSON 파일 다운로드 기능
+- 최신순 정렬 표시
+- XSS 방지 (HTML 이스케이프)
+
 ### 📂 게시물 준비중 섹션
 파일 탐색기 스타일로 준비 중인 콘텐츠 표시:
 - 📷 wedding_photos.zip - uploading...
 - 🎬 highlight_video.mp4 - encoding...
 - 🗺️ location_map.png - rendering...
-- 💌 guestbook.db - initializing...
 
 ### 📱 반응형 디자인
 | 화면 크기 | 적용 범위 |
@@ -50,19 +58,58 @@ Git log 스타일로 표시되는 마일스톤:
 | 데스크톱 | 1024px+ |
 | 대형 데스크톱 | 1400px+ |
 
-## 🚀 GitHub Pages 배포 방법
+## 🚀 설치 및 실행
 
-1. 이 저장소를 GitHub에 푸시합니다
-2. GitHub 저장소 → **Settings** → **Pages**
-3. Source에서 **Deploy from a branch** 선택
-4. Branch에서 **main** (또는 master) 선택 후 **Save**
-5. 몇 분 후 `https://[username].github.io/[repository-name]` 에서 확인 가능
+### 1. 의존성 설치
+```bash
+npm install
+```
+
+### 2. 서버 실행
+```bash
+npm start
+```
+
+서버가 `http://localhost:3000`에서 실행됩니다.
+
+### 3. 방명록 데이터 저장 위치
+방명록 데이터는 `guestbook/entries.json` 파일에 저장됩니다.
 
 ## 📁 파일 구조
 
 ```
-├── index.html    # 메인 청첩장 페이지
-└── README.md     # 설명 파일
+├── index.html          # 메인 청첩장 페이지
+├── server.js           # Express 서버 (방명록 API)
+├── package.json        # Node.js 의존성
+├── guestbook/          # 방명록 데이터 폴더
+│   └── entries.json    # 방명록 엔트리 (자동 생성)
+└── README.md           # 설명 파일
+```
+
+## 🔧 API 엔드포인트
+
+### GET /api/guestbook
+방명록 조회
+```json
+{
+  "success": true,
+  "entries": [
+    {
+      "name": "홍길동",
+      "message": "축하합니다!",
+      "date": "2026-01-01T12:00:00.000Z"
+    }
+  ]
+}
+```
+
+### POST /api/guestbook
+방명록 저장
+```json
+{
+  "name": "홍길동",
+  "message": "축하합니다!"
+}
 ```
 
 ## 🎨 커스터마이징

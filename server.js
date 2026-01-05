@@ -35,6 +35,18 @@ async function initGuestbookFile() {
     }
 }
 
+// 날짜/시간 포맷팅 함수 (YYYY-MM-DD_HH-MM-SS)
+function formatDateTime(date) {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const hours = String(d.getHours()).padStart(2, '0');
+    const minutes = String(d.getMinutes()).padStart(2, '0');
+    const seconds = String(d.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day}_${hours}-${minutes}-${seconds}`;
+}
+
 // Git에 커밋 및 푸시
 async function commitAndPushToGit(message) {
     try {
@@ -115,7 +127,8 @@ app.post('/api/guestbook', async (req, res) => {
         await fs.writeFile(GUESTBOOK_FILE, JSON.stringify(entries, null, 2), 'utf8');
 
         // Git에 커밋 및 푸시 (비동기로 실행, 실패해도 응답은 성공)
-        const commitMessage = `feat: 방명록 추가 - ${name.trim()}`;
+        const dateTime = formatDateTime(newEntry.date);
+        const commitMessage = `${dateTime}_${name.trim()}`;
         commitAndPushToGit(commitMessage).catch(err => {
             console.error('Git 업로드 중 오류 (무시됨):', err);
         });
@@ -170,7 +183,9 @@ app.put('/api/guestbook/:date', async (req, res) => {
         await fs.writeFile(GUESTBOOK_FILE, JSON.stringify(entries, null, 2), 'utf8');
 
         // Git에 커밋 및 푸시 (비동기로 실행, 실패해도 응답은 성공)
-        const commitMessage = `fix: 방명록 수정 - ${name.trim()}`;
+        const now = new Date();
+        const dateTime = formatDateTime(now);
+        const commitMessage = `${dateTime}_${name.trim()}`;
         commitAndPushToGit(commitMessage).catch(err => {
             console.error('Git 업로드 중 오류 (무시됨):', err);
         });
@@ -194,18 +209,22 @@ app.delete('/api/guestbook/:date', async (req, res) => {
         const data = await fs.readFile(GUESTBOOK_FILE, 'utf8');
         const entries = JSON.parse(data);
 
-        // 해당 날짜의 엔트리 필터링
-        const filteredEntries = entries.filter(e => e.date !== date);
-
-        if (filteredEntries.length === entries.length) {
+        // 해당 날짜의 엔트리 찾기 (삭제 전 이름 가져오기)
+        const entryToDelete = entries.find(e => e.date === date);
+        if (!entryToDelete) {
             return res.status(404).json({ success: false, error: '방명록을 찾을 수 없습니다.' });
         }
+
+        // 해당 날짜의 엔트리 필터링
+        const filteredEntries = entries.filter(e => e.date !== date);
 
         // 파일에 저장
         await fs.writeFile(GUESTBOOK_FILE, JSON.stringify(filteredEntries, null, 2), 'utf8');
 
         // Git에 커밋 및 푸시 (비동기로 실행, 실패해도 응답은 성공)
-        const commitMessage = `delete: 방명록 삭제 - ${date}`;
+        const now = new Date();
+        const dateTime = formatDateTime(now);
+        const commitMessage = `${dateTime}_${entryToDelete.name.trim()}`;
         commitAndPushToGit(commitMessage).catch(err => {
             console.error('Git 업로드 중 오류 (무시됨):', err);
         });
@@ -227,7 +246,9 @@ app.delete('/api/guestbook', async (req, res) => {
         await fs.writeFile(GUESTBOOK_FILE, JSON.stringify([], null, 2), 'utf8');
 
         // Git에 커밋 및 푸시 (비동기로 실행, 실패해도 응답은 성공)
-        const commitMessage = 'delete: 전체 방명록 삭제';
+        const now = new Date();
+        const dateTime = formatDateTime(now);
+        const commitMessage = `${dateTime}_전체삭제`;
         commitAndPushToGit(commitMessage).catch(err => {
             console.error('Git 업로드 중 오류 (무시됨):', err);
         });

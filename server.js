@@ -2,11 +2,15 @@ const express = require('express');
 const fs = require('fs').promises;
 const path = require('path');
 const cors = require('cors');
+const simpleGit = require('simple-git');
 
 const app = express();
 const PORT = 3000;
 const GUESTBOOK_DIR = path.join(__dirname, 'guestbook');
 const GUESTBOOK_FILE = path.join(GUESTBOOK_DIR, 'entries.json');
+
+// Git 초기화
+const git = simpleGit(__dirname);
 
 // Middleware
 app.use(cors());
@@ -28,6 +32,32 @@ async function initGuestbookFile() {
         await fs.access(GUESTBOOK_FILE);
     } catch {
         await fs.writeFile(GUESTBOOK_FILE, JSON.stringify([], null, 2), 'utf8');
+    }
+}
+
+// Git에 커밋 및 푸시
+async function commitAndPushToGit(message) {
+    try {
+        // 변경사항 추가
+        await git.add(['guestbook/entries.json']);
+        
+        // 커밋
+        await git.commit(message);
+        
+        // 푸시 (origin이 설정되어 있고 브랜치가 있는 경우)
+        try {
+            const branch = await git.revparse(['--abbrev-ref', 'HEAD']);
+            await git.push('origin', branch);
+            console.log(`✅ Git 푸시 성공: ${message}`);
+            return true;
+        } catch (pushError) {
+            // 푸시 실패는 경고만 출력 (원격 저장소가 없거나 설정되지 않은 경우)
+            console.log(`⚠️ Git 푸시 실패 (로컬 커밋은 완료됨): ${pushError.message}`);
+            return true; // 로컬 커밋은 성공했으므로 true 반환
+        }
+    } catch (error) {
+        console.error(`❌ Git 커밋 실패: ${error.message}`);
+        return false;
     }
 }
 
@@ -84,6 +114,12 @@ app.post('/api/guestbook', async (req, res) => {
         // 파일에 저장
         await fs.writeFile(GUESTBOOK_FILE, JSON.stringify(entries, null, 2), 'utf8');
 
+        // Git에 커밋 및 푸시 (비동기로 실행, 실패해도 응답은 성공)
+        const commitMessage = `feat: 방명록 추가 - ${name.trim()}`;
+        commitAndPushToGit(commitMessage).catch(err => {
+            console.error('Git 업로드 중 오류 (무시됨):', err);
+        });
+
         res.json({ success: true, entry: newEntry });
     } catch (error) {
         console.error('Error saving guestbook:', error);
@@ -133,6 +169,12 @@ app.put('/api/guestbook/:date', async (req, res) => {
         // 파일에 저장
         await fs.writeFile(GUESTBOOK_FILE, JSON.stringify(entries, null, 2), 'utf8');
 
+        // Git에 커밋 및 푸시 (비동기로 실행, 실패해도 응답은 성공)
+        const commitMessage = `fix: 방명록 수정 - ${name.trim()}`;
+        commitAndPushToGit(commitMessage).catch(err => {
+            console.error('Git 업로드 중 오류 (무시됨):', err);
+        });
+
         res.json({ success: true, entry: entries[entryIndex] });
     } catch (error) {
         console.error('Error updating guestbook:', error);
@@ -162,6 +204,12 @@ app.delete('/api/guestbook/:date', async (req, res) => {
         // 파일에 저장
         await fs.writeFile(GUESTBOOK_FILE, JSON.stringify(filteredEntries, null, 2), 'utf8');
 
+        // Git에 커밋 및 푸시 (비동기로 실행, 실패해도 응답은 성공)
+        const commitMessage = `delete: 방명록 삭제 - ${date}`;
+        commitAndPushToGit(commitMessage).catch(err => {
+            console.error('Git 업로드 중 오류 (무시됨):', err);
+        });
+
         res.json({ success: true });
     } catch (error) {
         console.error('Error deleting guestbook:', error);
@@ -177,6 +225,12 @@ app.delete('/api/guestbook', async (req, res) => {
 
         // 빈 배열로 저장
         await fs.writeFile(GUESTBOOK_FILE, JSON.stringify([], null, 2), 'utf8');
+
+        // Git에 커밋 및 푸시 (비동기로 실행, 실패해도 응답은 성공)
+        const commitMessage = 'delete: 전체 방명록 삭제';
+        commitAndPushToGit(commitMessage).catch(err => {
+            console.error('Git 업로드 중 오류 (무시됨):', err);
+        });
 
         res.json({ success: true });
     } catch (error) {

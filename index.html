@@ -1634,8 +1634,7 @@
         <!-- Wedding Card -->
         <div class="wedding-card">
             <div class="card-header">
-                <h1>💍 Life.Merge<br>(// 우리, 함께)</h1>
-                <div class="subtitle">// 두 사람이 하나의 인생으로 시작합니다</div>
+                <h1>💍 Life.Merge()<br>// 우리, 함께<br><span style="font-size: 0.6em;">// 두 사람이 하나의 인생으로 시작합니다</span></h1>
             </div>
             <div class="card-body">
                 <!-- Couple Section -->
@@ -1723,7 +1722,7 @@
                     </div>
                 </div>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="cursor: pointer; transition: transform 0.2s;" onclick="document.getElementById('location-section').scrollIntoView({behavior: 'smooth', block: 'center'});" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                 <div class="info-icon">📍</div>
                 <div class="info-content">
                     <div class="info-label">장소</div>
@@ -1742,7 +1741,7 @@
             </div>
             <div class="update-body">
                 <div class="update-message">
-                    <div class="update-emoji">💐🧎‍♂️</div>
+                    <div class="update-emoji">💑</div>
                     <div class="update-title">
                         "함께하는 인생 준비 중..."
                     </div>
@@ -1896,10 +1895,10 @@
         </div>
 
         <!-- Location Section -->
-        <div class="guestbook-section">
+        <div class="guestbook-section" id="location-section">
             <div class="guestbook-header">
                 <span class="guestbook-icon">📍</span>
-                <span class="guestbook-title">Location.find()</span>
+                <span class="guestbook-title">지도</span>
                 <span class="guestbook-badge">active</span>
             </div>
             <div class="guestbook-body">

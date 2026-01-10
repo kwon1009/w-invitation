@@ -1631,37 +1631,10 @@
     </div>
 
     <div class="container">
-        <!-- Terminal Window -->
-        <div class="terminal">
-            <div class="terminal-header">
-                <div class="terminal-btn red"></div>
-                <div class="terminal-btn yellow"></div>
-                <div class="terminal-btn green"></div>
-                <div class="terminal-title">우리의 여정</div>
-            </div>
-            <div class="terminal-body">
-                <div class="code-line">
-                    <span class="comment">// 🏠 함께하는 삶</span>
-                </div>
-                <div class="code-line">
-                    <span class="keyword">우리의</span> <span class="variable">여정</span> <span class="operator">=</span> <span class="class-name">새로운 시작</span>
-                </div>
-                <div class="code-line">
-                    <span class="variable">파트너</span>: <span class="string">"류민규"</span>
-                </div>
-                <div class="code-line">
-                    <span class="variable">파트너</span>: <span class="string">"권희선"</span>
-                </div>
-                <div class="code-line">
-                    <span class="variable">시작일</span>: <span class="string">"2026년 4월 4일"</span><span class="cursor"></span>
-                </div>
-            </div>
-        </div>
-
         <!-- Wedding Card -->
         <div class="wedding-card">
             <div class="card-header">
-                <h1>💍 우리, 함께</h1>
+                <h1>💍 Life.Merge<br>(// 우리, 함께)</h1>
                 <div class="subtitle">// 두 사람이 하나의 인생으로 시작합니다</div>
             </div>
             <div class="card-body">
@@ -1918,6 +1891,55 @@
                 <!-- Guestbook Entries -->
                 <div class="guestbook-entries" id="guestbook-entries" style="display: none;">
                     <!-- Entries will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Location Section -->
+        <div class="guestbook-section">
+            <div class="guestbook-header">
+                <span class="guestbook-icon">📍</span>
+                <span class="guestbook-title">Location.find()</span>
+                <span class="guestbook-badge">active</span>
+            </div>
+            <div class="guestbook-body">
+                <div class="location-info" style="text-align: center; margin-bottom: 20px;">
+                    <h3 style="color: var(--cyan); font-size: 18px; margin-bottom: 10px;">국방컨벤션</h3>
+                    <p style="color: var(--text); font-size: 14px; line-height: 1.8;">
+                        서울특별시 용산구 이태원로 22<br>
+                        (한강로동)
+                    </p>
+                </div>
+                
+                <!-- Google Map -->
+                <div class="map-container" style="border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
+                    <iframe 
+                        src="https://www.google.com/maps?q=국방컨벤션&output=embed&z=17" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+                <!-- Directions Buttons -->
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 20px;">
+                    <a href="https://map.naver.com/v5/search/국방컨벤션" 
+                       target="_blank" 
+                       style="padding: 12px; background: var(--bg-input); border: 1px solid var(--border); border-radius: 6px; text-align: center; color: var(--green); text-decoration: none; font-size: 13px; transition: all 0.3s;"
+                       onmouseover="this.style.background='var(--green-dim)'" 
+                       onmouseout="this.style.background='var(--bg-input)'">
+                        🗺️ 네이버 지도
+                    </a>
+                    <a href="https://map.kakao.com/link/search/국방컨벤션" 
+                       target="_blank" 
+                       style="padding: 12px; background: var(--bg-input); border: 1px solid var(--border); border-radius: 6px; text-align: center; color: var(--yellow); text-decoration: none; font-size: 13px; transition: all 0.3s;"
+                       onmouseover="this.style.background='rgba(227, 179, 65, 0.2)'" 
+                       onmouseout="this.style.background='var(--bg-input)'">
+                        🗺️ 카카오맵
+                    </a>
                 </div>
             </div>
         </div>
